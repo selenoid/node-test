@@ -38,7 +38,7 @@ dispatcher.setStatic('resources');
 
 //A sample GET request    
 dispatcher.onGet("/page1", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, {'Content-Type': 'application/json'});
 	
 	var retval = {};
 	var arr = ["ibrahim", "emre", "selen"];
@@ -49,9 +49,7 @@ dispatcher.onGet("/page1", function(req, res) {
 	}
 	
 	var json = JSON.stringify(retval);
-	console.log("json:" + json);
-	res.write(json);
-    res.end("ok");
+    res.end(json);
 });    
 
 
@@ -62,6 +60,32 @@ dispatcher.onGet("/page2", function(req, res) {
 
 //A sample POST request
 dispatcher.onPost("/post1", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Got Post Data');
+    res.writeHead(200, {'Content-Type': 'text/plain','Access-Control-Allow-Origin': 'http://localhost:1999'});
+	
+	var retval = {};
+	
+	function getRandomNumber() {
+		return(Math.floor(Math.random()*8));
+	}
+	
+	retval["d"] = [
+		[getRandomNumber(),getRandomNumber(),getRandomNumber(),getRandomNumber()],
+		[getRandomNumber(),getRandomNumber(),getRandomNumber(),getRandomNumber()],
+		[getRandomNumber(),getRandomNumber(),getRandomNumber(),getRandomNumber()],
+		[getRandomNumber(),getRandomNumber(),getRandomNumber(),getRandomNumber()],
+		[getRandomNumber(),getRandomNumber(),getRandomNumber(),getRandomNumber()]
+	]
+	
+	/*retval["d"] = [
+		[5,5,5,5],
+		[3,3,3,3],
+		[1,1,1,1],
+		[0,0,0,0],
+		[4,4,4,4]
+	]*/
+	
+	
+	var jsondata = JSON.stringify(retval);
+	
+    res.end(jsondata);
 });
