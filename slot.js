@@ -63,17 +63,29 @@ dispatcher.onPost("/post1", function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain','Access-Control-Allow-Origin': 'http://localhost:8383'});
 	
 	var retval = {};
+    
+    var itemsBoxEl0 = [0,0,0,0,0];
+    var itemsBoxEl1 = [1];
+    var itemsBoxEl2 = [2,2,2,2,2];
+    var itemsBoxEl3 = [3,3,3,3,3];
+    var itemsBoxEl4 = [4,4,4,4];
+    var itemsBoxEl5 = [5];
+    var itemsBoxEl6 = [6,6,6,6];
+    var itemsBoxEl7 = [7,7,7];
+    
+    var itemBox = itemsBoxEl0.concat(itemsBoxEl1).concat(itemsBoxEl2).concat(itemsBoxEl3).concat(itemsBoxEl4).concat(itemsBoxEl5).concat(itemsBoxEl6).concat(itemsBoxEl7);
+    
     function getRandomNumber() {
-        return(Math.floor(Math.random() * 8));
+        return itemBox[(Math.floor(Math.random() * itemBox.length))];
     }
 
     function getRoll() {
         var nuRoll = [];
+
         function checkRoll() {
-            if((nuRoll.indexOf(1) > -1) || (nuRoll.indexOf(5) > -1)) {
+            if ((nuRoll.indexOf(1) > -1) || (nuRoll.indexOf(5) > -1)) {
                 return 0
-            }
-            else  {
+            } else {
                 return 1;
             }
         }
@@ -102,7 +114,7 @@ dispatcher.onPost("/post1", function(req, res) {
         return nuRoll;
     }
 
-    retval["d"] = [getRoll(),getRoll(),getRoll(),getRoll(),getRoll()];
+    retval["d"] = [getRoll(), getRoll(), getRoll(), getRoll(), getRoll()];
     var jsondata = JSON.stringify(retval);
 	
     res.end(jsondata);
