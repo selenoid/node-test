@@ -15,4 +15,4 @@ echo.
 echo. 
 
 
-node slotserver.js
+nodemon slotserver.js

@@ -55,7 +55,7 @@ dispatcher.onGet("/page2", function(req, res) {
 
 //A sample POST request
 dispatcher.onPost("/post1", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/plain','Access-Control-Allow-Origin': 'http://localhost:8383'});
+    res.writeHead(200, {'Content-Type': 'text/plain','Access-Control-Allow-Origin': 'http://localhost:50188'});
 	
 	var retval = {};
     
