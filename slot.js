@@ -113,9 +113,12 @@ dispatcher.onPost("/post1", function(req, res) {
 
         return nuRoll;
     }
-
-    retval["d"] = [getRoll(), getRoll(), getRoll(), getRoll(), getRoll()];
+    
+    var arr = 
+    retval["d"] = [[getRoll(), getRoll(), getRoll(), getRoll(), getRoll()].join(',')];
     var jsondata = JSON.stringify(retval);
+	
+	console.log("j:" +jsondata);
 	
     res.end(jsondata);
 });
