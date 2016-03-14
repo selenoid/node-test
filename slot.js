@@ -84,6 +84,7 @@ dispatcher.onPost("/post1", function(req, res) {
 
         function checkRoll() {
             if ((nuRoll.indexOf(1) > -1) || (nuRoll.indexOf(5) > -1)) {
+				console.log("index:"+nuRoll.indexOf(1));
                 return 0
             } else {
                 return 1;
@@ -114,7 +115,6 @@ dispatcher.onPost("/post1", function(req, res) {
         return nuRoll;
     }
     
-    var arr = 
     retval["d"] = [[getRoll(), getRoll(), getRoll(), getRoll(), getRoll()].join(',')];
     var jsondata = JSON.stringify(retval);
 	
